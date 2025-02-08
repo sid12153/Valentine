@@ -1,0 +1,163 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rose Day</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            text-align: center;
+            font-family: 'Dancing Script', cursive;
+            background-color: #ffe6e6;
+            padding: 20px;
+            overflow: hidden;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .rose {
+            position: absolute;
+            top: -10px;
+            color: red;
+            font-size: 20px;
+            user-select: none;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+    </style>
+    <script>
+        function createRose() {
+            const rose = document.createElement("div");
+            rose.innerHTML = "🌹";
+            rose.classList.add("rose");
+            document.body.appendChild(rose);
+            
+            const startPos = Math.random() * window.innerWidth;
+            const duration = Math.random() * 5 + 5;
+            const size = Math.random() * 20 + 10;
+            
+            rose.style.left = `${startPos}px`;
+            rose.style.animationDuration = `${duration}s`;
+            rose.style.fontSize = `${size}px`;
+            
+            setTimeout(() => {
+                rose.remove();
+            }, duration * 1000);
+        }
+        
+        window.onload = function() {
+            setInterval(createRose, 200);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Happy Rose Day! 🌹</h1>
+        <p>On this special day, I give you a virtual rose as a symbol of my love and admiration for you. May our love blossom like the most beautiful rose in the world!</p>
+    </div>
+    <a href="valentine.html">Back to Home</a>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rose Day</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            text-align: center;
+            font-family: 'Dancing Script', cursive;
+            background-color: #ffdde1;
+            padding: 20px;
+            overflow: hidden;
+        }
+        .title {
+            font-size: 40px;
+            color: #b52e6f;
+        }
+        .rose-container {
+            position: relative;
+            margin-top: 50px;
+        }
+        .rose {
+            width: 300px;
+            height: 300px;
+            animation: rotate 100s linear infinite;
+        }
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .falling-roses {
+            position: absolute;
+            top: -50px;
+            color: red;
+            font-size: 24px;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            to { transform: translateY(100vh); }
+        }
+        .love-message {
+            margin-top: 30px;
+            font-size: 24px;
+            background: #fff0f3;
+            padding: 15px;
+            border-radius: 10px;
+            display: inline-block;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .love-message:hover {
+            transform: scale(1.1);
+        }
+    </style>
+    <script>
+        function createFallingRose() {
+            const rose = document.createElement("div");
+            rose.innerHTML = "🌹";
+            rose.classList.add("falling-roses");
+            document.body.appendChild(rose);
+            
+            const startPos = Math.random() * window.innerWidth;
+            const duration = Math.random() * 5 + 5;
+            const size = Math.random() * 20 + 20;
+            
+            rose.style.left = `${startPos}px`;
+            rose.style.animationDuration = `${duration}s`;
+            rose.style.fontSize = `${size}px`;
+            
+            setTimeout(() => {
+                rose.remove();
+            }, duration * 1000);
+        }
+        
+        window.onload = function() {
+            setInterval(createFallingRose, 500);
+        }
+    </script>
+</head>
+<body>
+    <h1 class="title">Happy Rose Day, My Love! 🌹</h1>
+    
+    <div class="rose-container">
+        <img class="rose" src= "C:\Users\Siddharth\Desktop\Siddharth_Photos\valentine's\rose-day.jpeg" alt="Rotating Rose">
+    </div>
+    
+    <div class="love-message">On this special day, I give you a virtual rose as a symbol of my love and admiration for you. May our love blossom like the most beautiful rose in the world! ❤️</div>
+    <br>
+    <a href="valentine.html">          Back to Home</a>
+</body>
+</html>
