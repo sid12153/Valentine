@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chocolate Day</title>
+    <style>
+        body {
+            background-color: #4e342e;
+            color: #fff;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            font-size: 3em;
+            margin-top: 20px;
+        }
+        .chocolate-box {
+            width: 150px;
+            height: 150px;
+            background-color: #6d4c41;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+            margin: 50px auto;
+            position: relative;
+            cursor: pointer;
+        }
+        .chocolate-box:after {
+            content: '🍫'; /* Chocolate emoji */
+            font-size: 3em;
+            position: absolute;
+        }
+        .message {
+            display: none;
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Happy Chocolate Day, DruBerry!</h1>
+    <p>Click the chocolate box to reveal a sweet message!</p>
+    <div class="chocolate-box" onclick="showMessage()"></div>
+    <p id="chocoMessage" class="message">You are sweeter than all the chocolates in the world! 🍫❤️</p>
+    <script>
+        function showMessage() {
+            document.getElementById("chocoMessage").style.display = "block";
+        }
+    </script>
+</body>
+</html>
