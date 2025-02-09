@@ -3,111 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Promise Day</title>
-    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <title>Propose Day 💍</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     <style>
         body {
-            background: url('stars.png') no-repeat center center fixed;
-            background-size: 100% 100%;
-            color: #FFFFFF;
             text-align: center;
-            font-family: 'Pacifico', cursive;
-            overflow: auto;
-            position: relative;
-            padding-top: 50px;
+            font-family: 'Dancing Script', cursive;
+            background-color: #fff0f5;
+            padding: 20px;
+            overflow: hidden;
         }
-        h1 {
-            font-size: 3em;
-            margin-top: 20px;
-            position: relative;
-            z-index: 2;
-        }
-        .heart-container {
-            position: absolute;
-            top: 40%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            animation: pulse 2s infinite;
-            z-index: 2;
-        }
-        .heart {
-            width: 100px;
-            height: 100px;
-            background-color: red;
-            position: relative;
-            transform: rotate(-45deg);
-            animation: glow 2s infinite alternate;
-        }
-        .heart:before,
-        .heart:after {
-            content: "";
-            width: 100px;
-            height: 100px;
-            background-color: red;
-            border-radius: 50%;
-            position: absolute;
-        }
-        .heart:before {
-            top: -50px;
-            left: 0;
-        }
-        .heart:after {
-            left: 50px;
-            top: 0;
-        }
-        @keyframes glow {
-            0% { box-shadow: 0 0 5px red; }
-            100% { box-shadow: 0 0 20px red; }
-        }
-        @keyframes pulse {
-            0% { transform: translate(-50%, -50%) scale(1); }
-            50% { transform: translate(-50%, -50%) scale(1.1); }
-            100% { transform: translate(-50%, -50%) scale(1); }
-        }
-        .message {
-            font-size: 2em;
-            margin-top: 200px;
-            width: 80%;
-            margin-left: auto;
-            margin-right: auto;
-            text-shadow: 0 0 10px #800000, 0 0 20px #E0FFFF;
-            text-align: center;
-            position: relative;
-            z-index: 2;
-        }
-        .home-button {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #ff5c5c;
-            color: white;
-            text-decoration: none;
+        .proposal-container {
+            margin-top: 30px;
+            background: #fff;
+            padding: 20px;
             border-radius: 10px;
-            font-size: 1.2em;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 700px;
+            margin: auto;
+            color: #880e4f;
+            font-size: 28px;
+        }
+        .ring-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .ring {
+            width: 100px;
+            height: 100px;
+            border: 5px solid gold;
+            border-radius: 50%;
             position: relative;
-            z-index: 2;
+            animation: shine 2s infinite alternate;
+        }
+        .diamond {
+            width: 40px;
+            height: 40px;
+            background-color: lightblue;
+            position: absolute;
+            top: -25px;
+            left: 30px;
+            clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+            animation: sparkle 1.5s infinite alternate;
+        }
+        @keyframes shine {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+        @keyframes sparkle {
+            0% { opacity: 0.8; }
+            100% { opacity: 1; filter: brightness(1.5); }
+        }
+        .accept-button {
+            margin-top: 20px;
+            padding: 15px 30px;
+            font-size: 20px;
+            background: #ff4081;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .accept-button:hover {
+            transform: scale(1.1);
         }
     </style>
 </head>
 <body>
-    <h1>Happy Promise Day, My Love!</h1>
-    <div class="heart-container">
-        <div class="heart"></div>
+    <h1>Happy Propose Day, Druberry! 💍</h1>
+    <div class="proposal-container">
+        <p>From the moment we met, my heart knew you were special. Through every smile, laugh, and shared memory, you've become the most precious part of my life.</p>
+        <p>So today, on this special day, I ask...</p>
+        <h2>Will you be my Valentine, DruBerry? ❤️</h2>
     </div>
-    <p class="message">My Druberry, I promise to stay with you and be your strongest support through all thick and thin. I promise to do my best to not let that smile go away from your face and be there for you anytime you need me. Even if you never feel the same way, know that my love for you will always be unwavering, a silent promise that I'll cherish you from afar, forever.</p>
-    <audio autoplay loop>
-        <source src="promise-music.mp3" type="audio/mpeg">
-    </audio>
+    <div class="ring-container">
+        <!-- <div class="ring">
+            <div class="diamond"></div> -->
+            <img class="rose" src= "C:\Users\Siddharth\Desktop\Siddharth_Photos\valentine's\propose-day.jpg" alt="Propose">
+        </div>
+    </div>
+    <button class="accept-button" onclick="alert('YAY! You said YES! 💖')">Yes! 💟</button>
     <br>
-    <button class="home-button" onclick="playMusic()">🎶 Play Sweet Music</button>
-    <br><br>
-    <a href="index.html" class="home-button">Back to Home</a>
-    <script>
-        function playMusic() {
-            let audio = new Audio('promise-music.mp3');
-            audio.play();
-        }
-    </script>
-        
+    <a href="valentine.html">Back to Home</a>
 </body>
 </html>
