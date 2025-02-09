@@ -24,7 +24,7 @@
         }
         .heart-container {
             position: absolute;
-            top: 40%;
+            top: 35%;
             left: 50%;
             transform: translate(-50%, -50%);
             animation: pulse 2s infinite;
@@ -98,6 +98,16 @@
     <audio autoplay loop>
         <source src="promise-music.mp3" type="audio/mpeg">
     </audio>
+    <br>
+    <button class="home-button" onclick="playMusic()">🎶 Play Sweet Music</button>
+    <br><br>
     <a href="index.html" class="home-button">Back to Home</a>
+    <script>
+        function playMusic() {
+            let audio = new Audio('promise-music.mp3');
+            audio.play();
+        }
+    </script>
+        
 </body>
 </html>
