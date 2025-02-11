@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiss Day</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: url('kiss_day_background.jpg') no-repeat center top/cover;
+            background-size: cover;
+            background-position: center 7%;
+            /* display: flex; */
+            color: #fff;
+            text-align: center;
+            font-family: 'Pacifico', cursive;
+            overflow: auto;
+        }
+        .container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            background: rgba(0, 0, 0, 0.15);
+            padding: 20px;
+            border-radius: 15px;
+            text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.8);
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 15px #ff69b4;
+        }
+        p {
+            /* font-size: 1.5em; */
+            line-height: 1.6;
+            font-size: 1.8em;
+            font-weight: bold;
+            text-shadow: 0 0 12px rgba(255, 182, 193, 0.9);
+            margin-bottom: 15px;
+        }
+        .kiss-button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #f5b0d2;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-size: 1.2em;
+            transition: 0.3s;
+            cursor: pointer;
+            border: none;
+            text-shadow: 0 0 10px #ff1493;
+            box-shadow: 0 0 10px rgba(255, 105, 180, 0.8);
+        }
+        .kiss-button:hover {
+            background-color: #f447a3;
+            box-shadow: 0 0 20px rgba(255, 20, 147, 1);
+        }
+        .kiss-message {
+            display: none;
+            font-size: 1.8em;
+            margin-top: 20px;
+            text-shadow: 2px 2px 10px #ff69b4;
+            animation: kissAnimation 1s ease-in-out infinite;
+            
+        }
+        @keyframes kissAnimation {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+    </style> 
+</head>
+<body>
+    <div class="container">
+        <h1>Happy Kiss Day, My Love!</h1>
+        <p class="romantic-text">I want to be your Last First Kiss, Druberry. 💖</p>
+        <div class="audio-controls">
+            <audio id="backgroundMusic" autoplay loop>
+                <source src="lover.mp3" type="audio/mpeg">
+            </audio>
+            <button class="kiss-button" onclick="toggleMusic(); this.style.display='none';">A song as sweet as your kisses 💋🎶</button>
+        </div>
+        <p>Someday, when the stars align and our hearts beat in sync, I’ll lean in and finally steal that kiss. Not just any kiss, but the one filled with all the emotions I’ve held back, the one that says everything I haven't put into words. Until then, here’s a kiss from my heart to yours. 💋</p>
+        <button onclick="sendKiss()" class="kiss-button" id="kissButton">Sending You a Kiss 💕</button>
+        <p class="kiss-message" id="kissMessage">You just received the sweetest kiss! Close your eyes and feel it 💖</p>
+        <br>
+        <a href="index.html" class="kiss-button">Back to Home</a>
+    </div>
+    <script>
+        function sendKiss() {
+            const messages = [
+                "A soft kiss just landed on your cheek! Feel that? 💖",
+                "You just received a kiss filled with love and warmth 😘",
+                "One virtual kiss for now… and a real one someday soon? 💋",
+                "Imagine my lips touching yours ever so gently… one day, my love 💕",
+                "That was just a teaser! The real kiss is yet to come 😘"
+            ];
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            
+            document.getElementById("kissMessage").innerText = randomMessage;
+            document.getElementById("kissMessage").style.display = "block";
+        }
+        function toggleMusic() {
+            var audio = document.getElementById("backgroundMusic");
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+        }
+    </script>
+    <style>
+        .kiss-button {
+            font-family: 'Pacifico', cursive; /* Apply decorative font */
+        }
+    </style>
+</body>
+</html>
