@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Surprise</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: url('valentine_day_bkg.jpg') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            font-family: 'Pacifico', cursive;
+            overflow: auto;
+            position: relative;
+        }
+        #welcome-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.85);
+            color: pink;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            font-family: 'Great Vibes', cursive;
+            z-index: 1000;
+            transition: opacity 1s ease-in-out;
+        }
+
+        #welcome-screen button {
+            margin-top: 20px;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            color: white;
+            background: #ff69b4;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(255, 105, 180, 0.8);
+        }
+
+        #welcome-screen button:hover {
+            background: #ff1493;
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.2);
+            margin: 20px;
+        }
+        h1 {
+            font-size: 3em;
+            /* text-shadow: 0 0 20px #ff69b4; */
+            text-shadow: 0 0 20px #ff69b4, 0 0 30px #ff1493
+        }
+
+        .timeline, .love-letter, .virtual-gift, .music-player, .reasons {
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(255, 182, 193, 0.15);
+            border-radius: 15px;
+            font-size: 1.5em;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+        }
+
+        .timeline p strong {
+            color: #ff69b4;
+            font-size: 1.3em;
+        }
+
+        .love-letter button {
+            background: #ff69b4;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+            box-shadow: 0 0 10px rgba(255, 105, 180, 0.8);
+            font-family: 'Pacifico', cursive;
+        }
+
+        .love-letter button:hover {
+            background: #ff1493;
+            box-shadow: 0 0 15px rgba(255, 20, 147, 1);
+        }
+
+        .hidden {
+            display: none;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+        }
+
+        .music-player audio {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .reasons ul {
+            list-style: none;
+            padding: 0;
+        }
+        .reasons li {
+            font-size: 1.2em;
+            margin: 10px 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+        }
+
+        .reasons li.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reasons li::before {
+            content: "❤️ ";
+        }
+
+        .gift-box {
+            width: 120px;
+            height: 120px;
+            background: pink;
+            margin: auto;
+            text-align: center;
+            line-height: 120px;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 15px;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(255, 105, 180, 0.7);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .gift-box:hover {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .gift-content {
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+        }
+
+        .gift-content img {
+            width: 500px;
+            margin: 50px;
+            border-radius: 10px;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .gift-content img:hover {
+            transform: scale(1.1);
+        }
+
+        .gift-content p {
+            font-size: 1.2em;
+            color: #ff69b4;
+            font-style: italic;
+        }
+        .gift-content figure {
+            text-align: center;
+            margin: 15px 0;
+        }
+
+        .gift-content figcaption {
+            font-size: 1em;
+            font-style: italic;
+            color: #FFD700; /* Light gold for better contrast */
+            margin-top: 5px;
+        }
+        .hidden {
+            display: none;
+        }
+
+        .gift-content:not(.hidden) {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .falling-heart {
+            position: absolute;
+            top: -50px;
+            color: red;
+            font-size: 24px;
+            animation: fall linear infinite;
+        }
+        /* @keyframes fall {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        } */
+        @keyframes fall {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(calc(100vh + 100px)); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div id="welcome-screen">
+        <h2>Shall we begin your surprise, my love? 💖</h2>
+        <button onclick="startSurprise()">Yes, Show Me! 😘</button>
+    </div>    
+    <div class="container">
+        <h1>Happy Valentine's Day, My Love ❤️</h1>
+        <div class="music-player">
+            <h2>Press Play & Let Me Tell You Just How Beautiful You Are 🎶</h2>
+            <audio controls>
+                <source src="what_makes_you_beautiful.mp3" type="audio/mpeg">
+            </audio>
+        </div>
+        <div class="timeline">
+            <h2>Our Love Journey</h2>
+            <p><em>From two friends to this special Valentine’s Day, our journey has been nothing short of magical. Here’s how we went from friends to something so much more... ❤️</em></p>
+            <p><strong>2018</strong> – We met for the first time, just two school kids playing together. Our friendship grew, and I started to think you were the cutest person ever.</p>
+            <p><strong>2021</strong> – I became your teacher, helping you study for exams. In those moments, I fell for you, and we shared a short-lived relationship, played badminton and had a cute thing between us.</p>
+            <p><strong>2022-2023</strong> – Life took us on different paths. During COVID, we drifted apart, though we never completely stopped talking.</p>
+            <p><strong>2023</strong> – I prepared to leave for the US, still deeply in love with you. Before I left, we met in a garden, and as I held your hands and looked into your eyes, I fell in love with you all over again.</p>
+            <p><strong>2024 (Summer)</strong> – I returned to India, hoping for a second chance, but you told me we couldn’t be together. Still, we went to your favorite spot—the lake. I held your hands, stood close, and let my heart speak even when words failed.</p>
+            <p><strong>January 2025</strong> – I came back, determined never to lose you again. We went on dates, shared beautiful moments, and I saw you in that gorgeous purple outfit, looking more breathtaking than ever. I hugged you countless times, took many pictures, and fell even harder for you.</p>
+            <p><strong>February 11, 2025</strong> – You asked me to be your Valentine. My heart melted. I know I’ll keep trying until the day you finally say yes to being my girlfriend.</p>
+        </div>
+        
+        <div class="love-letter">
+            <h2>A Letter from My Heart 💌</h2>
+            <button onclick="document.getElementById('letter-content').classList.toggle('hidden')">Unseal My Heart 💖</button>
+            <p id="letter-content" class="hidden">Babe,<br><br>
+                Finally, I get to have my first Valentine’s Day with you! It still feels unbelievable—I can’t believe that you are actually my Valentine. I am so lucky to have you, sweetheart. You are the most special girl in my life. You know exactly how to brighten even my gloomiest days. Your eyes—so beautiful, so expressive—speak volumes even when we aren’t talking.<br><br>
+                Every time I reflect on our journey, I realize how much you’ve helped me grow into a better person. Before you, love was just a word to me—I never truly understood it or cared for it. But meeting you changed everything. I learned what it means to care for someone deeply, to support them unconditionally, and to love them through every situation. You are one of my biggest motivations to keep going and giving my best.<br><br>
+                I’ll keep this love letter short, but my feelings for you are anything but small. I hope one day, just like this valentines, we will be in a relationship and I’ll be able to call you mine in front of whole world, lift you, hug you and kiss you without any worries. Until that day comes, I just want to thank you for being the incredible person you are. <br><br>
+                I love you, Druberry! ❤️
+            </p>
+        </div>
+            
+        <div class="virtual-gift">
+            <h2>Our Love, Sealed in Memories 💖</h2>
+            <div class="gift-box" onclick="document.getElementById('gift-content').classList.toggle('hidden')">Open</div>
+            <div id="gift-content" class="hidden gift-content">
+                <h2>These are not just images, but pieces of our journey together. 💕</h2>
+                
+                <figure>
+                    <img src="locket1.jpeg" alt="Locket">
+                    <figcaption>That day, you walked in looking like a dream, and I swear, my heart skipped a beat. You were glowing, and I couldn't take my eyes off you. Every second felt like a moment I'd want to live in forever.</figcaption>
+                </figure>
+        
+                <figure>
+                    <img src="locket2.jpeg" alt="Locket">
+                    <figcaption>Just a day before I left, you held my hand with both of yours, wrapping me in a warmth I had never felt before. In that moment, I knew— this wasn't just love, it was home. I wished time could stop right there.</figcaption>
+                </figure>
+        
+                <figure>
+                    <img src="certificate.png" alt="Certificate">
+                    <figcaption>Officially certified: You are the love of my life, my always and forever. No matter the distance, no matter the time, this will never change. ❤️</figcaption>
+                </figure>
+            </div>
+        </div>
+        
+        <div class="reasons">
+            <h2>Reasons I Love You 💕</h2>
+            <ul>
+                <li>Your smile makes my worst days better.</li>
+                <li>Every hug from you feels like the safest place in the world.</li>
+                <li>You make the simplest moments feel special and unforgettable.</li>
+                <li>The way your eyes light up when you’re happy is magical.</li>
+                <li>How you make my world brighter just by being in it.</li>
+                <li>The way you unknowingly steal my heart every time I see you.</li>
+                <li>How you always make me feel like the luckiest person alive.</li>
+                <li>Your laugh—it's the most beautiful sound ever.</li>
+                <li>Because no matter how much time passes, my heart always finds its way back to you.</li>
+                <li>Because I know, deep down, you're the one.</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        function startSurprise() {
+            const welcomeScreen = document.getElementById("welcome-screen");
+            welcomeScreen.style.opacity = "0";
+            setTimeout(() => welcomeScreen.style.display = "none", 1000); // Fade out effect
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            let reasons = document.querySelectorAll(".reasons li");
+            reasons.forEach((li, index) => {
+                setTimeout(() => {
+                    li.classList.add("visible");
+                }, index * 500);
+            });
+        });
+        
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.innerHTML = "❤️";
+            heart.classList.add("falling-heart");
+            heart.style.left = Math.random() * window.innerWidth + "px";
+            heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
+        }
+        setInterval(createHeart, 500);
+    </script>
+</body>
+</html>
